@@ -1,15 +1,16 @@
 function setup() {
-  createCanvas(800, 650);
+  createCanvas(720, 400);
+  noStroke()
 }
 
 function draw() {
-	background(230, 230, 250);
+	background(143, 188, 143);
 	fill(152, 251, 152);
-	triangle(300, 100, 400, 50, 300, 100);
+	triangle(45, 45, 45, 360, 200, 360);
 	textSize(54);
 	textFont('Georgia');
-	fill(105, 105, 105);
-	text('I hope you have a great day!', 400, 400)
+	fill(47, 79, 79);
+	text('I hope you have a great day!', 200, 400)
   if (mouseIsPressed) {
     fill(0);
   } else {
