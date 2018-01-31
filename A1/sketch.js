@@ -10,9 +10,9 @@ function draw() {
 	fill(152, 251, 152);
 	push();
 		rotate(map(hour(), 0, 23, 0, 2*PI))
-		triangle(45, 45, 45, 360, 200, 360);
+		arc(479, 300, 280, 280, PI, TWO_PI)
 	pop();
-	arc(479, 300, 280, 280, PI, TWO_PI)
+	triangle(45, 45, 45, 360, 200, 360);
 	textSize(map(minute(), 0, 59, 12, 100));
 	textFont('Georgia');
 	fill(47, 79, 79);
