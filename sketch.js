@@ -17,7 +17,7 @@ function draw() {
 	textSize(map(minute(), 0, 59, 12, 100));
 	textFont('Georgia');
 	fill(47, 79, 79);
-	text('I hope you have a great day!', 200, 350)
+	text('I hope you have a great day!!!', 200, 350)
   if (mouseIsPressed) {
     fill(47, 79, 79);
   } else {
