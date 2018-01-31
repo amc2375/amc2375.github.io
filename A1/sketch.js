@@ -2,12 +2,9 @@ function setup() {
   createCanvas(1440, 800);
   noStroke()
 }
-//var h = hour();
-//var m = minute();
-//var s = second();
-//188 was the G value for background
+
 function draw() {
-	background(143, map(second(), 100, 200), 143);
+	background(143, 188, 143);
 	fill(152, 251, 152);
 	triangle(45, 45, 45, 360, 200, 360);
 	arc(479, 300, 280, 280, PI, TWO_PI)
