@@ -13,7 +13,7 @@ function draw() {
 		triangle(45, 45, 45, 360, 200, 360);
 	pop();
 	arc(479, 300, 280, 280, PI, TWO_PI)
-	textSize(map(hour(), 0, 23, 70, 100));
+	textSize(map(hour(), 0, 23, 60, 80));
 	textFont('Georgia');
 	fill(47, 79, 79);
 	text('I hope you have a great day!!!', 200, 350)
