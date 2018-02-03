@@ -20,19 +20,18 @@ function draw() {
 	//create a range of blues
 	background(0, map(m, 0, 59, 60, 10), map(m, 0, 59, 255, 40));
 
+	//now time to add the stars by second
+	push();
+	for (var i = 0; i < s; i++) {
+		drawStar(xs[i], ys[i], 6, 15, 5);
+	}
+	pop();
 
 	//using the shape of the moon to represent hours
 	//first, adding a silver circle that should stay in the same place the whole time
 	push();
 	fill(192,192,192);
 	ellipse(125, 90, 100, 100);
-	pop();
-
-	//now time to add the stars by second
-	push();
-	for (var i = 0; i < s; i++) {
-		drawStar(xs[i], ys[i], 6, 15, 5);
-	}
 	pop();
 
 	//now, adding an ellipse that moves to the right with time. color is same as background
