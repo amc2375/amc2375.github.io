@@ -43,7 +43,7 @@ function draw() {
 	//now going to add a textbox with the time
 	push();
 	fill(50, 150)
-	rect(455, 335, 490, 45)
+	rect(452, 332, 495, 47, 15)
 	pop();
 	push();
 	textSize(40);
