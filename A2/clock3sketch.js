@@ -49,7 +49,7 @@ function draw() {
 	push();
 		fill(0);
 		for (var i = 0; i < s; i++) {
-			drawSeed(xs[i], ys[i], 8, 8);
+			drawSeed(xs[i], ys[i], 10, 10);
 		}
 	pop();
 
