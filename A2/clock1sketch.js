@@ -1,5 +1,6 @@
 var xs=[], ys=[];
 var x1=[], y1=[];
+var x2=[], y2=[];
 
 function setup() {
   createCanvas(1400, 740);
@@ -8,9 +9,13 @@ function setup() {
   	append(xs, random(width));
   	append(ys, random(height));
   }
-    for (var i = 0; i <200; i++) {
+   for (var i = 0; i <200; i++) {
   	append(x1, random(width));
   	append(y1, random(height));
+  }
+  for (var i = 0; i<200; i++) {
+  	append(x2, random(width));
+  	append(y2, random(height));
   }
 }
 
@@ -34,11 +39,17 @@ function draw() {
 	//create a range of blues
 	background(0, map(m, 0, 59, 60, 10), map(m, 0, 59, 255, 40));
 
-	//adding some tiny white dots to make it look like space!
+	//adding some tiny white and pink dots to make it look like space!
 	push();
 	for (var i = 0; i < 200; i++) {
 		fill(255);
 		ellipse(x1[i], y1[i], 1, 1);
+	}
+	pop();
+	push();
+	for (var i = 0; i < 200; i++) {
+		fill('lightpink');
+		ellipse(x2[i], y2[i], 1, 1);
 	}
 	pop();
 
