@@ -14,7 +14,16 @@ function draw() {
 	var h = hour();
 	var m = minute();
 	var s = second();
-
+	// to make hours in 12 not 24, while accounting for 12 am and 12 pm
+	if(h = 12) {
+		h = 12;
+	}
+	else if (h = 0) {
+		h = 12;
+	}
+	else {
+		h = hour()%12;
+	}
 	//using background color to represent minutes
 	//attempting to map the g to decrease slowly, and the blue to decrease more quickly to
 	//create a range of blues
@@ -50,7 +59,7 @@ function draw() {
 	textAlign(CENTER)
 	textFont('Arial')
 	fill(192,192,192);
-	text('the current time is ' + h%12 + ':' + m + ':' + s, 700, 370);
+	text('the current time is ' + h + ':' + m + ':' + s, 700, 370);
 	pop();
 }
 
