@@ -1,4 +1,5 @@
 var xs=[], ys=[];
+var x1=[], y1=[];
 
 function setup() {
   createCanvas(1400, 740);
@@ -6,6 +7,10 @@ function setup() {
   for (var i = 0; i <60; i++) {
   	append(xs, random(width));
   	append(ys, random(height));
+  }
+    for (var i = 0; i <200; i++) {
+  	append(x1, random(width));
+  	append(y1, random(height));
   }
 }
 
@@ -16,18 +21,26 @@ function draw() {
 	var s = second();
 	// to make hours in 12 not 24, while accounting for 12 am and 12 pm
 	if(h = 12) {
-		h = 12;
+		h = hour();
 	}
 	else if (h = 0) {
-		h = 12;
+		h = hour();
 	}
 	else {
-		h = hour()%12;
+		h = ((hour())%12);
 	}
 	//using background color to represent minutes
 	//attempting to map the g to decrease slowly, and the blue to decrease more quickly to
 	//create a range of blues
 	background(0, map(m, 0, 59, 60, 10), map(m, 0, 59, 255, 40));
+
+	//adding some tiny white dots to make it look like space!
+	push();
+	for (var i = 0; i < 200; i++) {
+		fill(255);
+		ellipse(x1[i], y1[i], 1, 1);
+	}
+	pop();
 
 	//now time to add the stars by second
 	push();
@@ -57,7 +70,7 @@ function draw() {
 	push();
 	textSize(40);
 	textAlign(CENTER)
-	textFont('Arial')
+	textFont('Helvetica')
 	fill(192,192,192);
 	text('the current time is ' + h + ':' + m + ':' + s, 700, 370);
 	pop();

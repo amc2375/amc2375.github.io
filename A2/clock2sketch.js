@@ -12,7 +12,7 @@ function setup() {
   	append(xs, a);
   }
   for (var i = 0; i < 60; i++) {
-  	var b = b + height/60;
+  	b = b + height/60;
   	append(ys, b);
   }
   /*
@@ -32,14 +32,16 @@ function setup() {
   var h = hour();
   var m = minute();
   var s = second();
-  
+
  	background(255);
  	stroke(50);
+  strokeWeight(6);
  	//second lines
  	for (i = 0; i < s; i++) {
  		line(xs[i], 0, 0, y[s]);
  	}
- 	/*//minute lines
+  /*
+ 	//minute lines
  	for(i=0; i<m; i++) {
  		line(0, ym[i], xm[i], height);
  	}
