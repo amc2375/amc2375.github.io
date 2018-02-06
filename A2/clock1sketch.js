@@ -24,16 +24,14 @@ function draw() {
 	var h = hour();
 	var m = minute();
 	var s = second();
-	// to make hours in 12 not 24, while accounting for 12 am and 12 pm
-	if(h = 12) {
-		h = hour();
-	}
-	else if (h = 0) {
-		h = hour();
+// to make hours in 12 not 24, while accounting for 12 am and 12 pm
+	if(h == 12 || h == 0) {
+		h = 12;
 	}
 	else {
-		h = ((hour())%12);
+		h = h%12;
 	}
+
 	//using background color to represent minutes
 	//attempting to map the g to decrease slowly, and the blue to decrease more quickly to
 	//create a range of blues
