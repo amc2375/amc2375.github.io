@@ -68,7 +68,7 @@ function draw() {
 	//now, adding an ellipse that moves to the right with time. color is same as background
 	push();
 	fill(0, map(m, 0, 59, 60, 10), map(m, 0, 59, 255, 40));
-	ellipse(map(h, 0, 23, 130, 225), 90, 100, 120);
+	ellipse(map(h, 0, 12, 130, 225), 90, 100, 120);
 	pop();
 
 	//now going to add a textbox with the time
