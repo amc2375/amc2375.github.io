@@ -48,5 +48,5 @@ function draw() {
 	textSize(94);
 	textFont('Helvetica')
 	textAlign(RIGHT);
-	text(h + ':' + m + ':' + s, 1370, 720);
+	text(h + ':' + m + ':' + s, 1370, 700);
 }
