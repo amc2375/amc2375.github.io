@@ -75,13 +75,13 @@ function draw() {
 	push();
 	fill(50, 150)
 	rect(452, 332, 495, 47, 15)
-	pop();
+	pop(); 
 	push();
 	textSize(40);
 	textAlign(CENTER)
 	textFont('Helvetica')
-	fill(192,192,192);
-	text('the current time is ' + h + ':' + m + ':' + s, 700, 370);
+	fill(192,192,192, 240);
+	text('the current time is: ' + h + ':' + m + ':' + s, 700, 370);
 	pop();
 }
 

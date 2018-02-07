@@ -1,0 +1,50 @@
+
+body {
+	background-color: lightgray;
+}
+
+h1 {
+	color: lightcoral;
+	text-align: center;
+	font-family: Helvetica;
+	font-size: 54;
+	letter-spacing: 3px;
+
+}
+
+h2 {
+	text-align: center;
+	font-family: Helvetica;
+}
+
+h3 {
+	text-align: center;
+	font-family: Helvetica;
+}
+
+
+a:link, a:visited {
+	background-color: lightcoral;
+	padding: 10px 10px;
+	border-radius: 10px;
+	text-decoration: none;
+	text-align: center;
+	font-family: Helvetica;
+	color: white;
+}
+a:hover {
+	background-color: white;
+	color: lightcoral;
+}
+
+#circle {
+	display:inline;
+	height: 200px;
+	width: 200px;
+	border-radius: 50%;
+	color: white;
+}
+
+.center {
+	text-align:center;
+}
