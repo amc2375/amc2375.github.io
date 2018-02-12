@@ -1,4 +1,6 @@
 var bylines = [];
+var circlex = [], circley = [];
+var maxLen, minLen;
 
 function preload() {
 
@@ -14,37 +16,38 @@ function preload() {
 
 function setup () {
 	createCanvas(1400, 740);
-	background(200,200,240);
+	background(60,60,100);
+	noStroke();
 
-	textSize(39);
+	textSize(14);
 	//textFont('New York Times');
 	textStyle(BOLD);
-	textAlign(LEFT);
+	textAlign(CENTER);
 	noLoop();
 
 	extractBylines();
+
+	for (var i = 0; i < bylines.length; i++) {
+		append(circlex, random(width));
+		append(circley, random(height));
+	}
 }
 
 function draw() {
-	var margin = 18;
+	var margin = 40;
 	translate(margin, margin);
 
-	var bylineString = bylines.join(' ');
-	bylines = split(bylineString, ' ');
-	bylineString = bylines.join(' ');
-	bylineString = bylineString.replace(/By/g, "");
-	bylineString = bylineString.replace(/and/g, "");
-	bylineString = bylineString.replace(/  /g, "  |  ");
-	bylineString = bylineString.replace(" ", "");
-	bylineString = bylineString.toLowerCase();
-	bylines = split (bylineString, "  | ");
 
-	fill(100);
-	rectMode(CORNERS);
-	text(bylineString, 0, 0, width-50, height-20);
+	for (var i = 0; i < bylines.length; i++) {
+		var radius = map(bylines[i].length, minLen, maxLen, (minLen*2 + 20), (maxLen*2 + 20));
 
-	console.log(bylineString);
-	console.log(bylines);
+		fill(130);
+		ellipse(circlex[i], circley[i], radius, radius);
+		fill(180);
+		text(bylines[i], circlex[i], circley[i]);
+
+	}
+	console.log(maxLen);
 }
 
 
@@ -53,6 +56,21 @@ function extractBylines() {
 
 	for (var i = 0; i < nytResponse.results.length; i++) {
 		var b = nytResponse.results[i].byline;
+
+		if(!maxLen) {
+			maxLen = b.length;
+		}
+		else if (b.length > maxLen) {
+			maxLen = b.length;
+		}
+
+		if(!minLen) {
+			minLen = b.length;
+		}
+		else if (b.length < minLen) {
+			minLen = b.length;
+		}
+
 		append(bylines, b);
 	}
 
