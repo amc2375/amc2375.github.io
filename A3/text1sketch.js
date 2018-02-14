@@ -16,12 +16,15 @@ var womenwords = [
 	"daughter",
 	"daughters",
 	"sister",
-	"sisters"
+	"sisters",
+	"mom",
+	"moms"
 	];
 var trumpwords = [
 	"trump",
 	"trump's",
-	"pence"
+	"pence",
+	"pence's",
 	];
 
 function preload() {
@@ -37,7 +40,7 @@ function preload() {
 }
 
 function setup() {
-	createCanvas(1400, 1120);
+	createCanvas(1400, 1220);
 	background(50);
 	textAlign(LEFT);
 	textSize(14);

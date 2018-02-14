@@ -1,4 +1,5 @@
 var bylines = [];
+var circlex = [], circley = [];
 var maxLen, minLen;
 
 function preload() {
@@ -15,7 +16,7 @@ function preload() {
 
 function setup () {
 	createCanvas(1400, 740);
-	background(180);
+	background(60,60,100);
 	noStroke();
 
 	textSize(14);
@@ -26,27 +27,24 @@ function setup () {
 
 	extractBylines();
 
+	for (var i = 0; i < bylines.length; i++) {
+		append(circlex, random(width));
+		append(circley, random(height));
+	}
 }
 
 function draw() {
-	translate(30, 0)
+	var margin = 40;
+	translate(margin, margin);
 
 
 	for (var i = 0; i < bylines.length; i++) {
 		var radius = map(bylines[i].length, minLen, maxLen, (minLen*2 + 20), (maxLen*2 + 20));
-		var xcoord = map(bylines[i].length, minLen, maxLen, 0, width-radius);
-		var ycoord = map(bylines[i].length, minLen, maxLen, 0, height);
-		var liney1 = map(bylines[i].length, minLen, maxLen, height/2, height);
-		var liney2 = map(bylines[i].length, minLen, maxLen, height/2, 0);
-		fill(80, 120, 120, 100);
-		ellipse(xcoord, height/2, radius, radius);
-		push();
-		stroke(40, 100);
-		strokeWeight(30);
-		fill(180, 120);
-		line(xcoord, liney2, xcoord, liney1);
-		pop();
-		//text(bylines[i], circlex[i], circley[i]);
+
+		fill(130);
+		ellipse(circlex[i], circley[i], radius, radius);
+		fill(180);
+		text(bylines[i], circlex[i], circley[i]);
 
 	}
 	console.log(maxLen);
