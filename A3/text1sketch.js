@@ -67,7 +67,7 @@ function draw() {
 				textStyle(BOLD);
 			}
 			else if (trumpwords.includes(words[j].toLowerCase())) {
-				fill(80);
+				fill(50);
 				words[j] = words[j].replace("Trump", "T****");
 
 			}

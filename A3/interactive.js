@@ -106,12 +106,12 @@ function draw() {
 	fill('pink');
 	textStyle(NORMAL);
 	textSize(32);
-	text("ny times headlines, modified...", 750, 230);
+	text("ny times headlines, modified...", 700, 230);
 	textSize(64);
 	textStyle(BOLD);
-	text("MORE WOMEN,", 800, 300);
+	text("MORE WOMEN,", 750, 300);
 	textStyle(ITALIC);
-	text("LESS TRUMP", 750, 350);
+	text("LESS TRUMP", 700, 350);
 	pop();
 
 
@@ -126,12 +126,13 @@ function draw() {
 			rect(mouseX, mouseY, 230, 30);
 			fill(255);
 			textSize(20);
-			text("click to see who wrote this", mouseX+10, mouseY+10);
+			if(!mouseIsPressed) {
+				text("click to see who wrote this", mouseX+10, mouseY+10);
+			}
 			if(mouseIsPressed) {
 				push();
 				textSize(50);
-				textAlign(CENTER);
-				text(bylines[i], width/2, 400);
+				text(bylines[i], mouseX+10, mouseY+10);
 				pop();
 			}
 			//text(bylines[i], mouseX+10, mouseY+30);
