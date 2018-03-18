@@ -6,7 +6,7 @@ var a3, m3, b3, a4, m4, b4, a5, m5, b5, a6, m6, b6, a7, m7, b7, a8, m8, b8;
 var x3 = [], y3 = [], x4 = [], y4 = [], x5 = [], y5 = [], x6 = [], y6 = [], x7 = [], y7 = [], x8 = [], y8 = [];
 
 function preload() {
-	table = loadTable('schooldata2.csv', 'csv', 'header')
+	table = loadTable('schooldata2.csv', 'csv', 'header');
 
 }
 
@@ -16,7 +16,7 @@ function setup() {
 	extractData();
 	noStroke();
 	textSize(80);
-	//console.log(a3, a4, a5, a6, a7, a8);
+	
 
 	for (var i = 0; i < a3; i++) {
 		fill(173,255,47);
@@ -123,6 +123,7 @@ function extractData() {
 	above = table.getColumn('Level 3+4 #');
 	meets = table.getColumn('Level 2 #');
 	below = table.getColumn('Level 1 #');
+
 	for (i = 0; i < grade.length; i++) {
 		if (year[i] == thisyear) {
 			if (grade[i] == 3) {
