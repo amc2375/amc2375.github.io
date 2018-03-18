@@ -72,7 +72,9 @@ function draw() {
 	textAlign(LEFT);
 	textStyle(ITALIC);
 	textSize(35);
-	text("math standard achievement by race and borough in " + thisyear, 0, height-40);
+	text("math standard achievement by race and borough in ", 0, height-40);
+	fill('yellow');
+	text(thisyear, 808, height-40);
 	pop();
 	
 	// push();
