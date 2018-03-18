@@ -1,11 +1,13 @@
 var table;
+var slider;
 var boro = [];
 var year = [], race = [], above = [], below = [];
-var thisyear = 2011; // decide which year to show data for -- this could be interactive next week
+var thisyear; // decide which year to show data for -- this could be interactive next week
 var a3, b3, a4, b4, a5, b5, a6, b6, a7, b7, a8, b8;
 
 var g = 'rgba(185,255,40, 0.8)';
 var r = 'rgba(255,99,71, 0.8)';
+var y = 'rgba(255,255,0,0.3)';
 var data = {}; //trying it as an object
 
 function preload() {
@@ -14,6 +16,13 @@ function preload() {
 }
 
 function setup() {
+	slider = createSlider(2006, 2012, 2006);
+}
+
+function draw() {
+	//***************** drawing bars ******************
+	clear();
+
 	createCanvas(windowWidth, windowHeight);
 	background(80);
 	textStyle(BOLD);
@@ -24,232 +33,57 @@ function setup() {
 
 	push();
 	fill(200);
-	triangle(0, 0, width, 0 , width, height);
-	text("BELOW", width/8, 2*height/3);
+	rect(0, height/2, width, height);
+	//triangle(0, 0, width, 0 , width, height);
+	fill(80)
+	text("BELOW", 3*width/4, 9*height/10);
 	pop();
 
 	push();
 	stroke(150);
 	strokeWeight(10);
-	line(0, 0, width, height);
+	line(0, height/2, width, height/2);
 	pop();
 
-	fill(80);
-	text("ABOVE", 2*width/3, height/3);
+	fill(200);
+	text("ABOVE", width/12, height/10);
 //**************** text to label boros *********************
+
+	push();
+	fill(120)
+	translate(30, 0);
+	textSize(25);
+	textStyle(ITALIC);
+	text("...the bronx", 90, height/2 - 10);
+	text("...brooklyn", width/5 + 65, height/2 - 10);
+	text("...manhattan", width*2/5 + 65, height/2 - 10);
+	text("...queens", width*3/5 + 65, height/2 - 10);
+	text("...staten island", width*4/5 +65, height/2 - 10);
+	pop();
+
+	
+
+	translate(30, 0);
+	thisyear = slider.value();
+	drawBars(thisyear);
+
+	push();
+	fill(255, 150);
+	textAlign(LEFT);
+	textStyle(ITALIC);
+	textSize(35);
+	text("math standard achievement by race and borough in " + thisyear, 0, height-40);
+	pop();
+	
 	// push();
-	// fill(120)
-	
-	// text("}", width/3, 3*height/14-15);
-	// text("}", 220+width/3, 5*height/14-15);
-
-	// textSize(20);
-	// textStyle(ITALIC);
-	// text("Bronx", 30+ width/3, 3*height/14 - 25);
-	// text("Brooklyn", 250+width/3, 5*height/14-25);
+	// textSize(240);
+	// textStyle(BOLD)
+	// textAlign(LEFT);
+	// fill(255, 50);
+	// text(thisyear, 0, height-30);
+	// fill(y);
+	// text(thisyear, 0, height-30);
 	// pop();
-
-	console.log(above);
-
-	//***************** drawing bars ******************
-
-	strokeWeight(10);
-	textSize(12);
-	
-	for (var i = 0; i < boro.length; i++) {
-		if(year[i] == thisyear) {
-		if(boro[i] == "BRONX") {
-			if(race[i] == "White") {
-				stroke(g);
-				line(width*4/28, height*4/28, width*4/28 + 2*above[i], height*4/28);
-				stroke(r);
-				line(width*4/28, height*4/28, width*4/28 - 2*below[i], height*4/28);
-				noStroke();
-				text(race[i], 6+width*4/28 + 2*above[i], 4+height*4/28);
-			}
-			else if(race[i] == "Black") {
-				stroke(g);
-				line(width*4.5/28, height*4.5/28, width*4.5/28 + 2*above[i], height*4.5/28);
-				stroke(r);
-				line(width*4.5/28, height*4.5/28, width*4.5/28 - 2*below[i], height*4.5/28);
-				noStroke();
-				text(race[i], 6+width*4.5/28 + 2*above[i], 4+height*4.5/28);
-			}
-			else if(race[i] == "Hispanic") {
-				stroke(g);
-				line(width*5/28, height*5/28, width*5/28 + 2*above[i], height*5/28);
-				stroke(r);
-				line(width*5/28, height*5/28, width*5/28 - 2*below[i], height*5/28);
-				noStroke();
-				text(race[i], 6+width*5/28 + 2*above[i], 4+height*5/28);
-			}
-			else if(race[i] == "Asian") {
-				stroke(g);
-				line(width*5.5/28, height*5.5/28, width*5.5/28 + 2*above[i], height*5.5/28);
-				stroke(r);
-				line(width*5.5/28, height*5.5/28, width*5.5/28 - 2*below[i], height*5.5/28);
-				noStroke();
-				text(race[i], 6+width*5.5/28 + 2*above[i], 4+height*5.5/28);
-			}
-		}
-		else if(boro[i] == "BROOKLYN") {
-			if(race[i] == "White") {
-				stroke(g);
-				line(width*8/28, height*8/28, width*8/28 + 2*above[i], height*8/28);
-				stroke(r);
-				line(width*8/28, height*8/28, width*8/28 - 2*below[i], height*8/28);
-				noStroke();
-				text(race[i], 6+width*8/28 + 2*above[i], 5+height*8/28);
-			}
-			else if(race[i] == "Black") {
-				stroke(g);
-				line(width*8.5/28, height*8.5/28, width*8.5/28 + 2*above[i], height*8.5/28);
-				stroke(r);
-				line(width*8.5/28, height*8.5/28, width*8.5/28 - 2*below[i], height*8.5/28);
-				noStroke();
-				text(race[i], 6+width*8.5/28 + 2*above[i], 5+height*8.5/28);
-			}
-			else if(race[i] == "Hispanic") {
-				stroke(g);
-				line(width*9/28, height*9/28, width*9/28 + 2*above[i], height*9/28);
-				stroke(r);
-				line(width*9/28, height*9/28, width*9/28 - 2*below[i], height*9/28);
-				noStroke();
-				text(race[i], 6+width*9/28 + 2*above[i], 4+height*9/28);
-			}
-			else if(race[i] == "Asian") {
-				stroke(g);
-				line(width*9.5/28, height*9.5/28, width*9.5/28 + 2*above[i], height*9.5/28);
-				stroke(r);
-				line(width*9.5/28, height*9.5/28, width*9.5/28 - 2*below[i], height*9.5/28);
-				noStroke();
-				text(race[i], 6+width*9.5/28 + 2*above[i], 4+height*9.5/28);
-			}
-		}
-		else if(boro[i] == "MANHATTAN") {
-			if(race[i] == "White") {
-				stroke(g);
-				line(width*12/28, height*12/28, width*12/28 + 2*above[i], height*12/28);
-				stroke(r);
-				line(width*12/28, height*12/28, width*12/28 - 2*below[i], height*12/28);
-				noStroke();
-				text(race[i], 6+width*12/28 + 2*above[i], 5+height*12/28);
-			}
-			else if(race[i] == "Black") {
-				stroke(g);
-				line(width*12.5/28, height*12.5/28, width*12.5/28 + 2*above[i], height*12.5/28);
-				stroke(r);
-				line(width*12.5/28, height*12.5/28, width*12.5/28 - 2*below[i], height*12.5/28);
-				noStroke();
-				text(race[i], 6+width*12.5/28 + 2*above[i], 5+height*12.5/28);
-			}
-			else if(race[i] == "Hispanic") {
-				stroke(g);
-				line(width*13/28, height*13/28, width*13/28 + 2*above[i], height*13/28);
-				stroke(r);
-				line(width*13/28, height*13/28, width*13/28 - 2*below[i], height*13/28);
-				noStroke();
-				text(race[i], 6+width*13/28 + 2*above[i], 4+height*13/28);
-			}
-			else if(race[i] == "Asian") {
-				stroke(g);
-				line(width*13.5/28, height*13.5/28, width*13.5/28 + 2*above[i], height*13.5/28);
-				stroke(r);
-				line(width*13.5/28, height*13.5/28, width*13.5/28 - 2*below[i], height*13.5/28);
-				noStroke();
-				text(race[i], 6+width*13.5/28 + 2*above[i], 4+height*13.5/28);
-			}
-		}
-		else if(boro[i] == "QUEENS") {
-			if(race[i] == "White") {
-				stroke(g);
-				line(width*16/28, height*16/28, width*16/28 + 2*above[i], height*16/28);
-				stroke(r);
-				line(width*16/28, height*16/28, width*16/28 - 2*below[i], height*16/28);
-				noStroke();
-				text(race[i], 6+width*16/28 + 2*above[i], 5+height*16/28);
-			}
-			else if(race[i] == "Black") {
-				stroke(g);
-				line(width*16.5/28, height*16.5/28, width*16.5/28 + 2*above[i], height*16.5/28);
-				stroke(r);
-				line(width*16.5/28, height*16.5/28, width*16.5/28 - 2*below[i], height*16.5/28);
-				noStroke();
-				text(race[i], 6+width*16.5/28 + 2*above[i], 5+height*16.5/28);
-			}
-			else if(race[i] == "Hispanic") {
-				stroke(g);
-				line(width*17/28, height*17/28, width*17/28 + 2*above[i], height*17/28);
-				stroke(r);
-				line(width*17/28, height*17/28, width*17/28 - 2*below[i], height*17/28);
-				noStroke();
-				text(race[i], 6+width*17/28 + 2*above[i], 4+height*17/28);
-			}
-			else if(race[i] == "Asian") {
-				stroke(g);
-				line(width*17.5/28, height*17.5/28, width*17.5/28 + 2*above[i], height*17.5/28);
-				stroke(r);
-				line(width*17.5/28, height*17.5/28, width*17.5/28 - 2*below[i], height*17.5/28);
-				noStroke();
-				text(race[i], 6+width*17.5/28 + 2*above[i], 4+height*17.5/28);
-			}
-		}
-		else if(boro[i] == "STATEN ISLAND") {
-			if(race[i] == "White") {
-				stroke(g);
-				line(width*20/28, height*20/28, width*20/28 + 2*above[i], height*20/28);
-				stroke(r);
-				line(width*20/28, height*20/28, width*20/28 - 2*below[i], height*20/28);
-				noStroke();
-				text(race[i], 6+width*20/28 + 2*above[i], 5+height*20/28);
-			}
-			else if(race[i] == "Black") {
-				stroke(g);
-				line(width*20.5/28, height*20.5/28, width*20.5/28 + 2*above[i], height*20.5/28);
-				stroke(r);
-				line(width*20.5/28, height*20.5/28, width*20.5/28 - 2*below[i], height*20.5/28);
-				noStroke();
-				text(race[i], 6+width*20.5/28 + 2*above[i], 5+height*20.5/28);
-			}
-			else if(race[i] == "Hispanic") {
-				stroke(g);
-				line(width*21/28, height*21/28, width*21/28 + 2*above[i], height*21/28);
-				stroke(r);
-				line(width*21/28, height*21/28, width*21/28 - 2*below[i], height*21/28);
-				noStroke();
-				text(race[i], 6+width*21/28 + 2*above[i], 4+height*21/28);
-			}
-			else if(race[i] == "Asian") {
-				stroke(g);
-				line(width*21.5/28, height*21.5/28, width*21.5/28 + 2*above[i], height*21.5/28);
-				stroke(r);
-				line(width*21.5/28, height*21.5/28, width*21.5/28 - 2*below[i], height*21.5/28);
-				noStroke();
-				text(race[i], 6+width*21.5/28 + 2*above[i], 4+height*21.5/28);
-			}
-		}
-		
-	}		
-}
-}
-
-function draw() {
- // need to see if it works to declare as object
-
-	//5 boros, with a half space before, between, and after boros: start at width/15, height/15
-	//for now, make lines parallel to edges
-	//want them to be perpendicular to the line eventually
-	
-	
-			// else if (race[i] == "Black") {
-			//  	line()
-			// }
-		
-	
-	
-	
-	
-	//line(width/15, height/15, width/15 + )
 }
 
 
@@ -263,13 +97,193 @@ function extractData() {
 	below = table.getColumn('Below %');
 	below = int(below);
 
-	
+}
 
+function drawBars(y) {
+	fill(255);
+	textAlign(CENTER);
+	textStyle(NORMAL);
+	strokeWeight(15);
+	textSize(12);
+	for (var i = 0; i < boro.length; i++) {
+		if(year[i] == y) {
+			if(boro[i] == "BRONX") {
+				if(race[i] == "White") {
+					stroke(g);
+					line(0, height/2, 0, height/2 - 3*above[i]);
+					stroke(r);
+					line(0, height/2, 0, height/2 + 3*below[i]);
+					noStroke();
+					text(race[i], 0, height/2-3*above[i] - 10);
+				}
+				else if(race[i] == "Black") {
+					stroke(g);
+					line(25, height/2, 25, height/2 - 3*above[i]);
+					stroke(r);
+					line(25, height/2, 25, height/2 + 3*below[i]);
+					noStroke();
+					text(race[i], 25, height/2 - 3*above[i] - 10);
+				}
+				else if(race[i] == "Hispanic") {
+					stroke(g);
+					line(50, height/2, 50, height/2 - 3*above[i]);
+					stroke(r);
+					line(50, height/2, 50, height/2 + 3*below[i]);
+					noStroke();
+					text(race[i], 50, height/2 - 3*above[i] - 10);
+				}
+				else if(race[i] == "Asian") {
+					stroke(g);
+					line(75, height/2, 75, height/2 - 3*above[i]);
+					stroke(r);
+					line(75, height/2, 75, height/2 + 3*below[i]);
+					noStroke();
+					text(race[i], 75, height/2 - 3*above[i] - 10);
+				}
+			}
+			else if(boro[i] == "BROOKLYN") {
+				if(race[i] == "White") {
+					stroke(g);
+					line(width/5-25, height/2, width/5-25, height/2 - 3*above[i]);
+					stroke(r);
+					line(width/5-25, height/2, width/5-25, height/2 + 3*below[i]);
+					noStroke();
+					text(race[i], width/5-25, height/2 - 3*above[i] - 10);
+				}
+				else if(race[i] == "Black") {
+					stroke(g);
+					line(width/5, height/2, width/5, height/2 - 3*above[i]);
+					stroke(r);
+					line(width/5, height/2, width/5, height/2 + 3*below[i]);
+					noStroke();
+					text(race[i], width/5, height/2 - 3*above[i] - 10);
+				}
+				else if(race[i] == "Hispanic") {
+					stroke(g);
+					line(width/5+25, height/2, width/5+25, height/2 - 3*above[i]);
+					stroke(r);
+					line(width/5+25, height/2, width/5+25, height/2 + 3*below[i]);
+					noStroke();
+					text(race[i], width/5+25, height/2 - 3*above[i] - 15);
+				}
+				else if(race[i] == "Asian") {
+					stroke(g);
+					line(width/5 +50, height/2, width/5 +50, height/2 - 3*above[i]);
+					stroke(r);
+					line(width/5 +50, height/2, width/5 +50, height/2 + 3*below[i]);
+					noStroke();
+					text(race[i], width/5+50, height/2 - 3*above[i] - 10);
+				}
+			}
+			else if(boro[i] == "MANHATTAN") {
+				if(race[i] == "White") {
+					stroke(g);
+					line(width*2/5 -25, height/2, width*2/5-25, height/2 - 3*above[i]);
+					stroke(r);
+					line(width*2/5-25, height/2, width*2/5-25, height/2 + 3*below[i]);
+					noStroke();
+					text(race[i], width*2/5 -25,height/2 - 3*above[i] - 10);
+				}
+				else if(race[i] == "Black") {
+					stroke(g);
+					line(width*2/5, height/2, width*2/5, height/2 - 3*above[i]);
+					stroke(r);
+					line(width*2/5, height/2, width*2/5, height/2 + 3*below[i]);
+					noStroke();
+					text(race[i], width*2/5,height/2 - 3*above[i] - 10);
+				}
+				else if(race[i] == "Hispanic") {
+					stroke(g);
+					line(width*2/5 + 25, height/2, width*2/5 + 25, height/2 - 3*above[i]);
+					stroke(r);
+					line(width*2/5 + 25, height/2, width*2/5 + 25, height/2 + 3*below[i]);
+					noStroke();
+					text(race[i], width*2/5 +25,height/2 - 3*above[i] - 10);
+				}
+				else if(race[i] == "Asian") {
+					stroke(g);
+					line(width*2/5 + 50, height/2, width*2/5 + 50, height/2 - 3*above[i]);
+					stroke(r);
+					line(width*2/5 + 50, height/2, width*2/5 + 50, height/2 + 3*below[i]);
+					noStroke();
+					text(race[i], width*2/5 +50,height/2 - 3*above[i] - 10);
+				}
+			}
+			else if(boro[i] == "QUEENS") {
+				if(race[i] == "White") {
+					stroke(g);
+					line(width*3/5-25, height/2, width*3/5-25, height/2 - 3*above[i]);
+					stroke(r);
+					line(width*3/5-25, height/2, width*3/5-25, height/2 + 3*below[i]);
+					noStroke();
+					text(race[i], width*3/5-25,height/2 - 3*above[i] - 10);
+				}
+				else if(race[i] == "Black") {
+					stroke(g);
+					line(width*3/5, height/2, width*3/5, height/2 - 3*above[i]);
+					stroke(r);
+					line(width*3/5, height/2, width*3/5, height/2 + 3*below[i]);
+					noStroke();
+					text(race[i], width*3/5,height/2 - 3*above[i] - 10);
+				}
+				else if(race[i] == "Hispanic") {
+					stroke(g);
+					line(width*3/5+25, height/2, width*3/5 + 25, height/2 - 3*above[i]);
+					stroke(r);
+					line(width*3/5 + 25, height/2, width*3/5 + 25, height/2 + 3*below[i]);
+					noStroke();
+					text(race[i], width*3/5+25,height/2 - 3*above[i] - 10);
+				}
+				else if(race[i] == "Asian") {
+					stroke(g);
+					line(width*3/5 + 50, height/2, width*3/5 + 50, height/2 - 3*above[i]);
+					stroke(r);
+					line(width*3/5 + 50, height/2, width*3/5 + 50, height/2 + 3*below[i]);
+					noStroke();
+					text(race[i], width*3/5+50,height/2 - 3*above[i] - 10);
+				}
+			}
+			else if(boro[i] == "STATEN ISLAND") {
+				if(race[i] == "White") {
+					stroke(g);
+					line(width*4/5-25, height/2, width*4/5-25, height/2 - 3*above[i]);
+					stroke(r);
+					line(width*4/5-25, height/2, width*4/5-25, height/2 + 3*below[i]);
+					noStroke();
+					text(race[i], width*4/5-25, height/2 - 3*above[i] - 10);
+				}
+				else if(race[i] == "Black") {
+					stroke(g);
+					line(width*4/5, height/2, width*4/5, height/2 - 3*above[i]);
+					stroke(r);
+					line(width*4/5, height/2, width*4/5, height/2 + 3*below[i]);
+					noStroke();
+					text(race[i], width*4/5, height/2 - 3*above[i] - 10);
+				}
+				else if(race[i] == "Hispanic") {
+					stroke(g);
+					line(width*4/5 + 25, height/2, width*4/5 + 25, height/2 - 3*above[i]);
+					stroke(r);
+					line(width*4/5 + 25, height/2, width*4/5 + 25, height/2 + 3*below[i]);
+					noStroke();
+					text(race[i], width*4/5+25, height/2 - 3*above[i] - 10);
+				}
+				else if(race[i] == "Asian") {
+					stroke(g);
+					line(width*4/5 + 50, height/2, width*4/5 + 50, height/2 - 3*above[i]);
+					stroke(r);
+					line(width*4/5 + 50, height/2, width*4/5 + 50, height/2 + 3*below[i]);
+					noStroke();
+					text(race[i], width*4/5+50, height/2 - 3*above[i] - 10);
+				}
+			}
+		}
+
+
+	}
 }
 
 
-// still need to: map numbers to bar lengths, generate points along line that are evenly spaced, and draw lines for corresponding 
-//grades and years
 
-//interactivity: want to hover over year name and be able to see more details
-//click on a year name to have that become the center of the page-- is that possible?
+//interactivity: need to create either a slider for the state of the year between 2006 and 2012. the variable can be 'thisyear'
+//if a slider doesn't work, use a box where someone enters the year? otherwise just a binary toggle button from 2006 to 2012
