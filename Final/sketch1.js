@@ -94,8 +94,7 @@ function extractData() {
 }
 
 function drawTargets(n, startX, startY) {
-	push();
-	pop();
+
 	for (var i=0; i<n; i++) {
 		push();
 		fill('rgba(255, 0 , 0, 0.5)');
