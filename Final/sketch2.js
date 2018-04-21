@@ -3,8 +3,6 @@ var centerX=[], centerY=[];
 var minX, maxX, minY, maxY;
 var coordX = [], coordY = [];
 
-var division;
-
 function preload() {
 	table = loadTable('policedata.csv', 'csv', 'header');
 	
@@ -14,7 +12,7 @@ function setup() {
 	createCanvas(windowWidth, windowHeight);
 	background(80);
 
-	division = 2*width/3;
+	var division = 2*width/3;
 
 	extractData();
 	drawPoints();
