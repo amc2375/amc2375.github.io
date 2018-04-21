@@ -1,7 +1,7 @@
 var table;
 var centerX=[], centerY=[];
 var minX, maxX, minY, maxY;
-var Xcoord = [], Ycoord = [];
+var coordX = [], coordY = [];
 
 var division;
 
@@ -11,13 +11,13 @@ function preload() {
 }
 
 function setup() {
-	createCanvas(windowWdith, windowHeight);
+	createCanvas(windowWidth, windowHeight);
 	background(80);
 
 	division = 2*width/3;
 
 	extractData();
-	console.log(Xcoord);
+	drawPoints();
 }
 
 
@@ -31,7 +31,15 @@ function extractData() {
 	maxY = max(centerY);
 
 	for (var i = 0; i<centerX.length; i++) {
-		Xcoord[i] = map(centerX[i], minX, maxX, 0, divison);
-		Ycoord[i] = map(centerY[i], minY, maxY, height, 0);
+		coordX[i] = map(centerX[i], minX, maxX, 0, divison);
+		coordY[i] = map(centerY[i], minY, maxY, height, 0);
+	}
+}
+
+function drawPoints() {
+	fill(151, 255, 119);
+	noStroke();
+	for (var i=0; i<coordX.length; i++) {
+		ellipse(coordX[i], coordY[i], 3);
 	}
 }
