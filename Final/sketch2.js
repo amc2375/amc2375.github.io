@@ -30,7 +30,7 @@ function extractData() {
 	maxX = max(centerX);
 	maxY = max(centerY);
 
-	for (var i = 0, i<lat.length, i++) {
+	for (var i = 0, i<centerX.length, i++) {
 		Xcoord[i] = map(centerX[i], minX, maxX, 0, divison);
 		Ycoord[i] = map(centerY[i], minY, maxY, height, 0);
 	}
