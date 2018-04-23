@@ -11,8 +11,8 @@ function preload() {
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
-	background(180);
-	stroke(255);
+	background(80);
+	stroke(180);
 	strokeWeight(10);
 	textAlign(LEFT);
 	
@@ -26,7 +26,7 @@ function setup() {
 	noStroke();
 	rect(0, 2*height/3 + 80, 2*width/3 - 45, 30); // river and axis
 	textSize(20);
-	fill('rgba(255, 0 , 0, 0.5)');
+	fill('rgba(151, 255, 119, 0.5)');
 	textAlign(CENTER);
 	textStyle(ITALIC);
 
@@ -97,13 +97,13 @@ function drawTargets(n, startX, startY) {
 
 	for (var i=0; i<n; i++) {
 		push();
-		fill('rgba(255, 0 , 0, 0.5)');
+		fill('rgba(151, 255, 119, 0.5)');
 		noStroke();
 		ellipse(startX, startY, 25, 25);
 		pop();
 		push();
 		strokeWeight(3);
-		stroke('rgba(255, 0, 0, 0.5)');
+		stroke('rgba(151, 255, 119, 0.5)');
 		noFill();
 		ellipse(startX, startY, 40, 40);
 		ellipse(startX, startY, 32, 32);
