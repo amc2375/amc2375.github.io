@@ -34,7 +34,7 @@ function extractData() {
 		if(!problemcounts) {
 			problemcounts = createNumberDict(problem, 1);
 		}
-		else if (!problemcounts.hasKey(problem,1)) {
+		else if (!problemcounts.hasKey(problem)) {
 			problemcounts.create(problem, 1);
 		}
 		else {
