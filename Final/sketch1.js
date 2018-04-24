@@ -2,7 +2,7 @@ var table;
 var race = [], sex = [];
 var whitemen = 0, whitewomen = 0, blackmen = 0, blackwomen = 0, other = 0;
 var wmrect, wwrect, bmrect, bwrect, min, max;
-var wmtarget, wwtarget, bmtarget, bwtarget;
+var wmtarget, wwtarget, bmtarget, bwtarget, onetarget;
 
 function preload() {
 	table = loadTable('policedata.csv', 'csv', 'header');
@@ -26,22 +26,21 @@ function setup() {
 	noStroke();
 	rect(0, 2*height/3 + 80, 2*width/3 - 45, 30); // river and axis
 	textSize(20);
-	fill('rgba(151, 255, 119, 0.5)');
+	fill('rgba(151, 255, 119, 1)');
 	textAlign(CENTER);
 	textStyle(ITALIC);
 
-	//rect(2*width/12 -60, height/2, 20, -bmrect); // black men
 	drawTargets(bmtarget, 2*width/12-60, 2*height/3 + 80);
 	text("BLACK MEN", 2*width/12-60, 2*height/3 + 140);
-	//rect(4*width/12 +60, 2*height/3 + 80, 20, -bwrect); // black women
 	drawTargets(bwtarget, 4*width/12+60, 2*height/3 + 80);
 	text("BLACK WOMEN", 4*width/12+60, 2*height/3 + 140);
-	//rect(3*width/12, 2*height/3 + 80, 20, -wmrect); //white men
 	drawTargets(wmtarget, 3*width/12, 2*height/3 + 80);
 	text("WHITE MEN", 3*width/12, 2*height/3 + 140);
-	//rect(5*width/12+120, 2*height/3 + 80, 20, -wwrect); // white women
 	drawTargets(wwtarget, 5*width/12+120, 2*height/3 + 80);
 	text("WHITE WOMEN", 5*width/12+120, 2*height/3 + 140);
+
+	drawTargets(1, 2*width/3-250, 50);
+	text("= "+onetarget+" PEOPLE", 2*width/3-150, 60);
 	
 	pop();
 
@@ -49,14 +48,14 @@ function setup() {
 }
 
 function draw() {
-	fill(255);
+	fill(180);
 	textSize(60);
 	push();
 	strokeWeight(2);
-	text('Use of Force by Police in Minnneapolis, MN', 2*width/3-20, 40, width/3 + 30, 300);
+	text('Use of Force by Police in Minnneapolis, MN', 2*width/3-20, 40, height/2+100, 300);
 	textSize(40);
 	strokeWeight(0.5);
-	text('Who is it happening to?', 2*width/3, height/2+220, width/3, 300);
+	text('WHO IS IT HAPPENING TO?', 2*width/3, height/2+180, 400);
 	pop();
 }
 
@@ -90,6 +89,7 @@ function extractData() {
 	wwtarget = int(map(whitewomen, min, max, 2, 10));
 	bmtarget = int(map(blackmen, min, max, 2, 10));
 	bwtarget = int(map(blackwomen, min, max, 2, 10));
+	onetarget = min/2;
 
 }
 
@@ -97,13 +97,13 @@ function drawTargets(n, startX, startY) {
 
 	for (var i=0; i<n; i++) {
 		push();
-		fill('rgba(151, 255, 119, 0.5)');
+		fill('rgba(151, 255, 119, 0.8)');
 		noStroke();
 		ellipse(startX, startY, 25, 25);
 		pop();
 		push();
 		strokeWeight(3);
-		stroke('rgba(151, 255, 119, 0.5)');
+		stroke('rgba(151, 255, 119, 0.8)');
 		noFill();
 		ellipse(startX, startY, 40, 40);
 		ellipse(startX, startY, 32, 32);
