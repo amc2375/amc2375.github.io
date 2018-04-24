@@ -12,6 +12,9 @@ function setup() {
 	extractData();
 
 	console.log(problemcounts[1]);
+
+	//draw boxes
+
 }
 
 function draw() {
@@ -21,7 +24,7 @@ function draw() {
 function extractData() {
 	problem = table.getColumn('Problem');
 	for (var i = 0; i < problem.length; i++) {
-		var problem = probelm[i];
+		var problem = problem[i];
 
 		if(!problemcounts) {
 			problemcounts = createNumberDict(problem, 1);

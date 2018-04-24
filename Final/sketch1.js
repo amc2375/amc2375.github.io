@@ -89,7 +89,7 @@ function extractData() {
 	wwtarget = int(map(whitewomen, min, max, 2, 10));
 	bmtarget = int(map(blackmen, min, max, 2, 10));
 	bwtarget = int(map(blackwomen, min, max, 2, 10));
-	onetarget = min/2;
+	onetarget = int(min/2);
 
 }
 
