@@ -11,9 +11,14 @@ function setup() {
 
 	extractData();
 
-	console.log(problemcounts[1]);
+	console.log(problemcounts);
 
-	//draw boxes
+	//*************draw boxes*************
+	// for (var i = 0; i < problemcounts.length; i++) {
+	// 	for (var j = 0; j < problemcounts.get(problemcounts); i++) {
+
+	// 	}
+	// }
 
 }
 
