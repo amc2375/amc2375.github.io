@@ -12,7 +12,7 @@ function setup() {
 
 	extractData();
 
-	console.log(problemcounts);
+	console.log(problemCounts);
 
 	//*************draw boxes*************
 	// for (var i = 0; i < problemcounts.length; i++) {
