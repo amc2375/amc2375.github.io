@@ -1,5 +1,6 @@
 var table;
-var problemcounts;
+var problemCounts;
+var problem;
 
 function preload() {
 	table = loadTable('policedata.csv', 'csv', 'header');
@@ -28,17 +29,19 @@ function draw() {
 
 function extractData() {
 	problem = table.getColumn('Problem');
+
+
 	for (var i = 0; i < problem.length; i++) {
 		var problem = problem[i];
 
-		if(!problemcounts) {
-			problemcounts = createNumberDict(problem, 1);
+		if(!problemCounts) {
+			problemCounts = createNumberDict(problem, 1);
 		}
-		else if (!problemcounts.hasKey(problem)) {
-			problemcounts.create(problem, 1);
+		else if (!problemCounts.hasKey(problem)) {
+			problemCounts.create(problem, 1);
 		}
 		else {
-			problemcounts.add(problem, 1);
+			problemCounts.add(problem, 1);
 		}
 	}
 }
