@@ -1,4 +1,4 @@
-var overOne, overTwo, overThree;
+var overOne, overTwo, overThree, overReset;
 var state=0;
 var table, table2, table3;
 
@@ -12,7 +12,7 @@ var m2008 = {}, m2009 = {}, m2010 = {}, m2011 = {}, m2012 = {}, m2013 = {}, m201
 //state two variables
 var race = [], sex = [];
 var whitemen = 0, whitewomen = 0, blackmen = 0, blackwomen = 0, other = 0;
-var wmrect, wwrect, bmrect, bwrect, min, max;
+var min, max;
 var wmtarget, wwtarget, bmtarget, bwtarget, onetarget;
 
 //state three variables 
@@ -51,37 +51,97 @@ function draw() {
 	//drawing circles to select state
 	fill(255);
 	noStroke();
-	ellipse(division+(1*division/12), height/2-40, 50, 50);
-	ellipse(division+(3*division/12), height/2-40, 50, 50);
-	ellipse(division+(5*division/12), height/2-40, 50, 50);
-	var division = 2*width/3
+
+	rectMode(CENTER);
+	rect(division+division/12, height/2-40, 80, 30, 20);
+	rect(division+3*division/12, height/2-40, 80, 30, 20);
+	rect(division+5*division/12, height/2-40, 80, 30, 20);
+	rect(division+3*division/12, height/2-80, 100, 30, 20);
+	// ellipse(division+(1*division/12), height/2-40, 80, 40);
+	// ellipse(division+(3*division/12), height/2-40, 80, 40);
+	// ellipse(division+(5*division/12), height/2-40, 80, 40);
+	// ellipse(division+(3*division/12), height/2-100, 80, 40);
+
 	//**************** setting up for the mousepressed state ******************
 	var distOne = dist(mouseX, mouseY, division+(1*division/12), height/2-40);
 	var distTwo = dist(mouseX, mouseY, division+(3*division/12), height/2-40);
 	var distThree = dist(mouseX, mouseY, division+(5*division/12), height/2-40);
-	if (distOne < 50) {
+	var distReset = dist(mouseX, mouseY, division+3*division/12, height/2-80)
+	if (distOne < 30) {
 		overOne = true;
 	}
 	else {overOne=false;}
-	if (distTwo < 50) {
+	if (distTwo < 30) {
 		overTwo = true;
 	}
 	else {overTwo=false;}
-	if (distThree < 50) {
+	if (distThree < 30) {
 		overThree = true;
 	}
 	else {overThree=false;}
+	if(distReset < 30) {
+		overReset = true;
+	}
+	else{overReset=false;}
 	//***********************************************************************
 
-	// ********************* setting up state one ****************************
+	// ********************* setting up states ****************************
+	if(state == 0) {
+		background(80);
+		//drawing circles to select state
+		fill('rgba(151, 255, 119, 0.7)');
+		noStroke();
+		rectMode(CENTER);
+		rect(division +division/12, height/2-40, 80, 30, 20);
+		rect(division+3*division/12, height/2-40, 80, 30, 20);
+		rect(division+5*division/12, height/2-40, 80, 30, 20);
+		rect(division+3*division/12, height/2-80, 100, 30, 20);
+		fill(80);
+		textAlign(CENTER);
+		textSize(16);
+		text('When?', division +division/12, height/2-35);
+		text('Who?', division +3*division/12, height/2-35);
+		text('Why?', division +5*division/12, height/2-35);
+		text('Reset', division+3*division/12, height/2-75)
+		textSize(60);
+		fill(255);
+		text('What do you want to know?', division+division/4, height/3, division/2, height/2);
+		stroke(255);
+		strokeWeight(4);
+		line(division + 20, 20, division + 20, height-20);
+		line(division + 40, height/2, width-20, height/2);
+
+		noStroke();
+		textStyle(BOLD);
+		textSize(100);
+		text('Use of Force by Police in Minneapolis, MN.', division/2, height/2+50, division, height);
+		textSize(30);
+		text('Anna Carlson', division/2, 3*height/4+50, division, height/4);
+		text('source: City of Minneapolis', division/2, 3*height/4+100, division, height/4);
+		textStyle(NORMAL);
+
+
+	}
 	if(state == 1) {
 		background(80);
 		//drawing circles to select state
-		fill(255);
+		fill('rgba(151, 255, 119, 0.7)');
 		noStroke();
-		ellipse(division+(1*division/12), height/2-40, 50, 50);
-		ellipse(division+(3*division/12), height/2-40, 50, 50);
-		ellipse(division+(5*division/12), height/2-40, 50, 50);
+		rectMode(CENTER);
+		rect(division +division/12, height/2-40, 80, 30, 20);
+		rect(division+3*division/12, height/2-40, 80, 30, 20);
+		rect(division+5*division/12, height/2-40, 80, 30, 20);
+		rect(division+3*division/12, height/2-80, 100, 30, 20);
+		fill(80);
+		textAlign(CENTER);
+		textSize(16);
+		text('When?', division +division/12, height/2-35);
+		text('Who?', division +3*division/12, height/2-35);
+		text('Why?', division +5*division/12, height/2-35);
+		text('Reset', division+3*division/12, height/2-75)
+		textSize(60);
+		fill(255);
+		text('What do you want to know?', division+division/4, height/3, division/2, height/2);
 		stroke(255);
 		strokeWeight(4);
 		line(division + 20, 20, division + 20, height-20);
@@ -114,6 +174,8 @@ function draw() {
 		text('jan', 60, height-60);
 		text('dec', 60, 60);
 
+		//text('In general, use of force by police seems to have gone down over time.')
+
 		textSize(80);
 		text('WHEN?', 5*width/6, 40+ 3*height/4);
 
@@ -121,10 +183,23 @@ function draw() {
 	else if(state == 2) {
 		background(80);
 		//drawing circles to select state
+		fill('rgba(151, 255, 119, 0.7)');
+		noStroke();
+		rectMode(CENTER);
+		rect(division +division/12, height/2-40, 80, 30, 20);
+		rect(division+3*division/12, height/2-40, 80, 30, 20);
+		rect(division+5*division/12, height/2-40, 80, 30, 20);
+		rect(division+3*division/12, height/2-80, 100, 30, 20);
+		fill(80);
+		textAlign(CENTER);
+		textSize(16);
+		text('When?', division +division/12, height/2-35);
+		text('Who?', division +3*division/12, height/2-35);
+		text('Why?', division +5*division/12, height/2-35);
+		text('Reset', division+3*division/12, height/2-75)
+		textSize(60);
 		fill(255);
-		ellipse(division+(1*division/12), height/2-40, 50, 50);
-		ellipse(division+(3*division/12), height/2-40, 50, 50);
-		ellipse(division+(5*division/12), height/2-40, 50, 50);
+		text('What do you want to know?', division+division/4, height/3, division/2, height/2);
 		stroke(255);
 		strokeWeight(4);
 		line(division + 20, 20, division + 20, height-20);
@@ -132,27 +207,29 @@ function draw() {
 
 		rectMode(CORNER);
 		push();
-		fill('rgba(30, 144, 255, 0.4)');
-		noStroke();
-		rect(0, 2*height/3 + 80, 2*width/3 - 45, 30); // river and axis
+		stroke(255);
+		strokeWeight(4);
+		var heightdiv = 6*height/7
+		line(20, heightdiv, division-20, heightdiv);
+		//rect(0, 2*height/3 + 80, 2*width/3 - 45, 30); // river and axis
 		textSize(20);
-		fill('rgba(151, 255, 119, 1)');
+		fill(255);
 		textAlign(CENTER);
 		textStyle(ITALIC);
-
-		drawTargets(bmtarget, 2*width/12-60, 2*height/3 + 80);
-		text("BLACK MEN", 2*width/12-60, 2*height/3 + 140);
-		drawTargets(bwtarget, 4*width/12+60, 2*height/3 + 80);
-		text("BLACK WOMEN", 4*width/12+60, 2*height/3 + 140);
-		drawTargets(wmtarget, 3*width/12, 2*height/3 + 80);
-		text("WHITE MEN", 3*width/12, 2*height/3 + 140);
-		drawTargets(wwtarget, 5*width/12+120, 2*height/3 + 80);
-		text("WHITE WOMEN", 5*width/12+120, 2*height/3 + 140);
+		noStroke();
+		drawTargets(bmtarget, 2*width/12-60, heightdiv-25);
+		text("BLACK MEN", 2*width/12-60, heightdiv +25);
+		drawTargets(bwtarget, 4*width/12+60, heightdiv-25);
+		text("BLACK WOMEN", 4*width/12+60, heightdiv +25);
+		drawTargets(wmtarget, 3*width/12, heightdiv-25);
+		text("WHITE MEN", 3*width/12, heightdiv +25);
+		drawTargets(wwtarget, 5*width/12+120, heightdiv-25);
+		text("WHITE WOMEN", 5*width/12+120, heightdiv +25);
 
 		drawTargets(1, 2*width/3-250, 50);
 		text("= "+onetarget+" PEOPLE", 2*width/3-150, 60);
 		pop();
-
+		textStyle(NORMAL);
 		textAlign(CENTER);
 		textSize(80);
 		text('WHO?', 5*width/6, 40+ 3*height/4);
@@ -162,11 +239,23 @@ function draw() {
 	else if (state == 3) {
 		background(80);
 		//drawing circles to select state
-		fill(255);
+		fill('rgba(151, 255, 119, 0.7)');
 		noStroke();
-		ellipse(division+(1*division/12), height/2-40, 50, 50);
-		ellipse(division+(3*division/12), height/2-40, 50, 50);
-		ellipse(division+(5*division/12), height/2-40, 50, 50);
+		rectMode(CENTER);
+		rect(division +division/12, height/2-40, 80, 30, 20);
+		rect(division+3*division/12, height/2-40, 80, 30, 20);
+		rect(division+5*division/12, height/2-40, 80, 30, 20);
+		rect(division+3*division/12, height/2-80, 100, 30, 20);
+		fill(80);
+		textAlign(CENTER);
+		textSize(16);
+		text('When?', division +division/12, height/2-35);
+		text('Who?', division +3*division/12, height/2-35);
+		text('Why?', division +5*division/12, height/2-35);
+		text('Reset', division+3*division/12, height/2-75)
+		textSize(60);
+		fill(255);
+		text('What do you want to know?', division+division/4, height/3, division/2, height/2);
 		stroke(255);
 		strokeWeight(4);
 		line(division + 20, 20, division + 20, height-20);
@@ -192,7 +281,7 @@ function draw() {
 			}
 			push();
 			textAlign(LEFT);
-			fill(255, 180);
+			fill(255, 160);
 			var textsize = map(probcount[i], 650, 4335, 18, 114);
 			textSize(textsize);// for now, used actual min (650) and actual max(4355) bc it's saying min(probcounts) is not a function?
 			text(problems[i], 10, starty3);
@@ -206,10 +295,17 @@ function draw() {
 		fill(255);
 		text('WHY?', 5*width/6, 40+ 3*height/4);
 	}
+	if(overReset == true | overOne == true | overTwo == true | overThree == true) {
+		cursor(HAND);
+	}
+	else{cursor(ARROW);}
 }
 
 function mousePressed () {
-	if(overOne == true) {
+	if(overReset == true) {
+		state = 0;
+	}
+	else if(overOne == true) {
 		state = 1;
 	}
 	else if(overTwo == true) {
@@ -378,14 +474,10 @@ function extractData() {
 	}
 	min = min(whitemen, whitewomen, blackmen, blackwomen);
 	max = max(whitemen, whitewomen, blackmen, blackwomen);
-	wmrect = map(whitemen, min, max, 40, height/2 - 20);
-	wwrect = map(whitewomen, min, max, 40, height/2 -20);
-	bmrect = map(blackmen, min, max, 40, height/2 -20);
-	bwrect = map(blackwomen, min, max, 40, height/2 -20);
-	wmtarget = int(map(whitemen, min, max, 2, 10));
-	wwtarget = int(map(whitewomen, min, max, 2, 10));
-	bmtarget = int(map(blackmen, min, max, 2, 10));
-	bwtarget = int(map(blackwomen, min, max, 2, 10));
+	wmtarget = int(map(whitemen, min, max, 2, 12));
+	wwtarget = int(map(whitewomen, min, max, 2, 12));
+	bmtarget = int(map(blackmen, min, max, 2, 12));
+	bwtarget = int(map(blackwomen, min, max, 2, 12));
 	onetarget = int(min/2);
 
 	//state 3 data
