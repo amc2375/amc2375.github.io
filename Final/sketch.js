@@ -17,7 +17,7 @@ var wmtarget, wwtarget, bmtarget, bwtarget, onetarget;
 
 //state three variables 
 var problems=[], probcount=[];
-var starty3 = 10;
+
 //var mincount3, maxcount3;
 
 function preload() {
@@ -50,6 +50,7 @@ function draw() {
 
 	//drawing circles to select state
 	fill(255);
+	noStroke();
 	ellipse(division+(1*division/12), height/2-40, 50, 50);
 	ellipse(division+(3*division/12), height/2-40, 50, 50);
 	ellipse(division+(5*division/12), height/2-40, 50, 50);
@@ -77,6 +78,7 @@ function draw() {
 		background(80);
 		//drawing circles to select state
 		fill(255);
+		noStroke();
 		ellipse(division+(1*division/12), height/2-40, 50, 50);
 		ellipse(division+(3*division/12), height/2-40, 50, 50);
 		ellipse(division+(5*division/12), height/2-40, 50, 50);
@@ -128,6 +130,7 @@ function draw() {
 		line(division + 20, 20, division + 20, height-20);
 		line(division + 40, height/2, width-20, height/2);
 
+		rectMode(CORNER);
 		push();
 		fill('rgba(30, 144, 255, 0.4)');
 		noStroke();
@@ -160,6 +163,7 @@ function draw() {
 		background(80);
 		//drawing circles to select state
 		fill(255);
+		noStroke();
 		ellipse(division+(1*division/12), height/2-40, 50, 50);
 		ellipse(division+(3*division/12), height/2-40, 50, 50);
 		ellipse(division+(5*division/12), height/2-40, 50, 50);
@@ -168,13 +172,14 @@ function draw() {
 		line(division + 20, 20, division + 20, height-20);
 		line(division + 40, height/2, width-20, height/2);
 
+		rectMode(CORNER);
 		noStroke();
 		fill('rgba(151, 255, 119, 0.5)');
-		
+		var starty3 = 10;
 		for (var i=0; i<problems.length; i++) {
 			var startx3 = 10;
 			for (var j = 0; j < probcount[i]; j++) {
-				if(startx3<2*width/3) {
+				if(startx3<division) {
 					rect(startx3, starty3, 3, 3);
 					startx3 = startx3+5.5;
 				}
@@ -186,8 +191,10 @@ function draw() {
 				
 			}
 			push();
+			textAlign(LEFT);
 			fill(255, 180);
-			textSize(map(probcount[i], 650, 4355, 18, 114));// for now, used actual min (650) and actual max(4355) bc it's saying min(probcounts) is not a function?
+			var textsize = map(probcount[i], 650, 4335, 18, 114);
+			textSize(textsize);// for now, used actual min (650) and actual max(4355) bc it's saying min(probcounts) is not a function?
 			text(problems[i], 10, starty3);
 			pop();
 
@@ -196,6 +203,7 @@ function draw() {
 		}
 		textAlign(CENTER);
 		textSize(80);
+		fill(255);
 		text('WHY?', 5*width/6, 40+ 3*height/4);
 	}
 }
