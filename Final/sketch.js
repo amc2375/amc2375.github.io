@@ -29,6 +29,7 @@ function preload() {
 function setup() {
 	extractData();
 	createCanvas(windowWidth, windowHeight);
+	//createCanvas(1920, 1080);
 	var division = 2*width/3;
 	
 	background(80);

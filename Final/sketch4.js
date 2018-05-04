@@ -216,8 +216,6 @@ function drawRects (yearnum, yearvar, startx, starty) {
 		var monthhght = hght/12;
 	}
 	
-
-
 	for (var i = 1; i<13; i++) {
 		var col = map(yearvar[i], 0, maxcount/12+100, 255,0);
 		noStroke();
