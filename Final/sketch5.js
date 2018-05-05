@@ -411,7 +411,7 @@ function extractData() {
 
 	}
 	for (var i = 0; i< 12; i++) {
-		monthmapped[i] = map(monthcounts[i], minmonth, maxmonth, 90, 300);
+		monthmapped[i] = map(monthcounts[i], minmonth, maxmonth, 40, 300);
 	}
 
 

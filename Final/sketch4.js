@@ -237,11 +237,3 @@ function drawRects (yearnum, yearvar, startx, starty) {
 // need a count of each month for each year, then can iterate through in the loop in draw rect to 
 // draw a rect for each month, with the color mapped to the number for that month
 
-
-// communityBoards.forEach(function(cb) {
-//     if (cb in gardenCounts) {
-//       gardenCounts[cb]++;
-//     } else {
-//       gardenCounts[cb] = 1;
-//     }
-//   });
