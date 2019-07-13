@@ -109,7 +109,7 @@ function draw() {
 		text('Reset', division+3*division/12, height/2-75)
 		textSize(60);
 		fill(255);
-		text('What do you want to know?', division+2*division/5, height/3, division/2-20, height/2);
+		text('What do you want to know?', division+division/4, height/3, division/2-20, height/2);
 		stroke(255);
 		strokeWeight(4);
 		line(division + 20, 20, division + 20, height-20);
